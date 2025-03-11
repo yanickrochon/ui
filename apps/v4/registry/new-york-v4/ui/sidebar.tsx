@@ -576,8 +576,11 @@ function SidebarMenuAction({
 
 function SidebarMenuBadge({
   className,
+  showOnCollapsed,
   ...props
-}: React.ComponentProps<"div">) {
+}: React.ComponentProps<"div"> & {
+  showOnCollapsed?: boolean;
+}) {
   return (
     <div
       data-slot="sidebar-menu-badge"
@@ -588,7 +591,7 @@ function SidebarMenuBadge({
         "peer-data-[size=sm]/menu-button:top-1",
         "peer-data-[size=default]/menu-button:top-1.5",
         "peer-data-[size=lg]/menu-button:top-2.5",
-        "group-data-[collapsible=icon]:hidden",
+        !showOnCollapsed && "group-data-[collapsible=icon]:hidden",
         className
       )}
       {...props}
